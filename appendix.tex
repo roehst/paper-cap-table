@@ -1,0 +1,116 @@
+
+\subsection{Transactions}
+
+\Glspl{transaction} are the actions performed on  \glspl{security}.  \Glspl{transaction} are organized in primitive \glspl{transaction} and specific transactions. Primitive \glspl{transaction} represent the different \textit{kinds} of \glspl{transaction} in the financial domain. Figure~\ref{fig:ocf-primitive-transactions} shows the directory structure of the primitive \glspl{transaction}.
+
+\begin{figure}[H]
+	\dirtree{%
+		.1 schema/.
+		.2 primitives/.
+		.3 objects/.
+		.4 transactions/.
+		.5 acceptance/Acceptance.schema.json.
+		.5 cancellation/Cancellation.schema.json.
+		.5 conversion/Conversion.schema.json.
+		.5 exercise/Exercise.schema.json.
+		.5 issuance/Issuance.schema.json.
+		.5 reissuance/Reissuance.schema.json.
+		.5 release/Release.schema.json.
+		.5 repurchase/Repurchase.schema.json.
+		.5 retraction/Retraction.schema.json.
+		.5 SecurityTransaction.schema.json.
+		.5 StockClassTransaction.schema.json.
+		.5 StockPlanTransaction.schema.json.
+		.5 Transaction.schema.json.
+		.5 transfer/Transfer.schema.json.
+	}
+	\caption{Primitive transactions in the OCF}\label{fig:ocf-primitive-transactions}
+\end{figure}
+
+The primitive \glspl{transaction}, with additional fields, are specialized to each of four different types of securities: stocks, convertible notes, warrants, and plan \glspl{security}. We group them by the \gls{asset-class} they specialize in. Figure~\ref{fig:ocf-transactions-specialized-vesting} shows the directory structure of the specialized \glspl{transaction}.
+
+\begin{figure}[H]
+	\dirtree{%
+		.1 schema/.
+		.2 objects/.
+		.3 transactions/.
+		.4 cancellation/PlanSecurityCancellation.schema.json.
+		.4 repurchase/PlanSecurityRepurchase.schema.json.
+		.4 retraction/PlanSecurityRetraction.schema.json.
+		.4 transfer/PlanSecurityTransfer.schema.json.
+		.4 release/PlanSecurityRelease.schema.json.
+		.4 reissuance/PlanSecurityReissuance.schema.json.
+		.4 acceptance/PlanSecurityAcceptance.schema.json.
+		.4 issuance/PlanSecurityIssuance.schema.json.
+		.4 exercise/PlanSecurityExercise.schema.json.
+	}
+	\caption{Transactions relevant to stock options and vesting}\label{fig:ocf-transactions-specialized-vesting}
+\end{figure}
+
+Figure~\ref{fig:ocf-transactions-specialized-stock} shows the directory structure of the specialized \glspl{transaction} for stocks.
+
+\begin{figure}[H]
+	\dirtree{%
+		.1 schema/.
+		.2 objects/.
+		.3 transactions/.
+		.4 acceptance/StockAcceptance.schema.json.
+		.4 cancellation/StockCancellation.schema.json.
+		.4 conversion/StockConversion.schema.json.
+		.4 issuance/StockIssuance.schema.json.
+		.4 reissuance/StockReissuance.schema.json.
+		.4 repurchase/StockRepurchase.schema.json.
+		.4 retraction/StockRetraction.schema.json.
+		.4 transfer/StockTransfer.schema.json.
+	}
+	\caption{Transactions relevant to stock}\label{fig:ocf-transactions-specialized-stock}
+\end{figure}
+
+Figure~\ref{fig:ocf-transactions-specialized-warrant} shows the directory structure of the specialized \glspl{transaction} for warrants.
+
+\begin{figure}[H]
+	\dirtree{%
+		.1 schema/.
+		.2 objects/.
+		.3 transactions/.
+		.4 acceptance/WarrantAcceptance.schema.json.
+		.4 cancellation/WarrantCancellation.schema.json.
+		.4 exercise/WarrantExercise.schema.json.
+		.4 issuance/WarrantIssuance.schema.json.
+		.4 retraction/WarrantRetraction.schema.json.
+		.4 transfer/WarrantTransfer.schema.json.
+	}
+	\caption{Transactions relevant to warrants}\label{fig:ocf-transactions-specialized-warrant}
+\end{figure}
+
+Figure~\ref{fig:ocf-transactions-specialized-convertible} shows the directory structure of the specialized \glspl{transaction} for convertibles.
+
+\begin{figure}[H]
+	\dirtree{%
+		.1 schema/.
+		.2 objects/.
+		.3 transactions/.
+		.4 acceptance/ConvertibleAcceptance.schema.json.
+		.4 cancellation/ConvertibleCancellation.schema.json.
+		.4 conversion/ConvertibleConversion.schema.json.
+		.4 issuance/ConvertibleIssuance.schema.json.
+		.4 retraction/ConvertibleRetraction.schema.json.
+		.4 transfer/ConvertibleTransfer.schema.json.
+	}
+	\caption{Transactions relevant to convertibles}\label{fig:ocf-transactions-specialized-convertible}
+\end{figure}
+
+Additional \glspl{transaction} adjust parameters of \glspl{stock-class} and stock option plans. Figure~\ref{fig:ocf-transactions-adjustment} shows the directory structure of the adjustment \glspl{transaction}.
+
+\begin{figure}[H]
+	\dirtree{%
+		.1 schema/.
+		.2 objects/.
+		.3 transactions/.
+		.4 adjustment/.
+		.5 StockClassConversionRatioAdjustment.schema.json.
+		.5 StockClassAuthorizedSharesAdjustment.schema.json.
+		.5 StockPlanPoolAdjustment.schema.json.
+	}
+	\caption{Adjustment transactions in the OCF}\label{fig:ocf-transactions-adjustment}
+\end{figure}

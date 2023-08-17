@@ -1,0 +1,44 @@
+% document class is that of an article.
+
+\documentclass[12pt]{article}
+
+% better geometry
+\usepackage[margin=1in]{geometry}
+
+% I need minted for code highlighting,
+% configure it to gobble
+\usepackage{minted}
+
+\setminted{
+  baselinestretch=1.2, 
+  linenos, 
+  autogobble
+}
+
+% I want sans-serif font
+\renewcommand{\familydefault}{\sfdefault}
+
+% I need lorem ipsum
+\usepackage{lipsum}
+
+\usepackage{caption}
+
+\usepackage{tabularx}
+
+% add 1 line between paragraphs
+
+\setlength{\parskip}{1em}
+
+% i need to use \toprule, \bottomrule, etc
+\usepackage{booktabs}
+
+\begin{document}
+
+We have an Excel spreadsheet for a vesting term that shows how complicated it is to model a single stock plan security. We use it as the example for the vesting system and for the capitalization table example.
+
+We also have a spreadsheet of funding rounds that we explore in the transaction tracing model.
+
+We also have a new rationale underlying the model construction.
+
+
+\end{document}

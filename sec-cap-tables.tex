@@ -1,0 +1,182 @@
+\section{Capitalization tables and the need for specifications}
+\label{ch:cap-tables}
+\label{sec:cap-tables}
+
+A \gls{capitalization-table} is a table that shows a company's ownership stakes. The ownership stakes of the company's founders, angel investors, funds, and employees are illustrated in Table~\ref{tab:cap-table}. Additionally, the table displays the number of shares issued, the type of security, the price per share, and the date of issuance. The capitalization table is used to calculate the ownership of each shareholder.
+
+{\small
+% Asset class, stakeholder, shares, cost, % ownership
+\begin{table}[!h]
+	\centering
+	%Acme Corp. 
+	%\\
+	%Capitalization table \textemdash{} December, 20XX
+	%\vspace{3mm}
+	\begin{tabular}{l|l|l|l|l}
+		\toprule
+		Asset class     & Stakeholder     & Shares                 & Cost  & \% Ownership           \\
+		                &                 & \small{Actual/diluted} &       & \small{Actual/diluted} \\ \midrule
+		Common stock    & Founders        & 700/700                & 0   & 78\%/70\%              \\ \midrule
+		Preferred stock & Angel investors & 50/50                  & 80  & 6\%/5\%                \\ \midrule
+		Preferred stock & Funds           & 150/150                & 300 & 16\%/15\%              \\ \midrule
+		Options         & Employees       & 0/100                  & 0   & 0\%/10\%               \\ \midrule
+		Total           &                 & 900/1000               & 350 & 100\%/100\%            \\ \bottomrule
+	\end{tabular}
+	\caption{A capitalization table -- Acme Corp. -- Dec. 2020 
+     \label{tab:cap-table}}
+\end{table}
+}
+
+Stakeholders have interests in different \glspl{asset-class}, resulting in some shares and \% ownership at a given cost. The cost might be different for different investors as they invest at different times, as a company's  value might fluctuate.
+
+%Options are granted to employees, who can \gls{exercise} the options and exchange them for actual shares. As an incentive for the employee to stay with the company, virtually all options have a \textit{vesting schedule}, which is a period of time that the employee must remain with the company in order to \gls{exercise} the options. The most typical case is to vest shares after 1 year, and then vest the remaining shares monthly over the next 3 years. Vesting will be the subject of a later section.
+
+%\subsection{Use in startup financing}
+
+A typical use of \glspl{capitalization-table} is to follow investments in a company over time. In \glspl{startup-company}, for example, investments appear in stages: each stage requiring the achievement of certain objectives and milestones.
+%
+The amount of investment can vary depending on the stage \cite{Metrick}: Seed/Startup financing, Early-stage financing, Mid-stage financing and Later-stage financing. 
+%
+From a computer science perspective, \textbf{a capitalization table is the state of a system, and financing operations are transitions of that state}. 
+
+Each round of \gls{staged-financing} is defined in contracts that define business rules. It is common for the investors of each round to have different rights and obligations.
+%
+Conversions, transfers, vesting, and other events can only occur under specific conditions, and those conditions must always be validated to prevent the company's ownership structure be misrepresented.
+%
+All these business rules and conditions are potentially complex to validate.
+
+
+\subsection{The Open Cap table Format (OCF)}
+
+JSON Schema is a specification for JavaScript Object Notation (JSON) data that defines the structure and constraints of JSON data. JSON is a lightweight data interchange format that is widely used in web applications and APIs due to its simplicity and readability. JSON Schema (RFC8259 \cite{RFC8259}) enables developers to specify the structure and constraints of JSON data. Taking into account these characteristics, the Open Cap Table Coalition \cite{octc} employs JSON Schema to provide the Open Cap table Format (OCF), which incorporates data communication standards and concepts. 
+
+Our analysis is based on the following commit: 
+
+\begin{minted}{bash}
+git clone https://github.com/Open-Cap-Table-Coalition/Open-Cap-Format-OCF
+git checkout 20f3ede62d1f5bdbef16ae1edfa98c34fbda2610
+\end{minted}
+
+%\subsection{The file format}
+
+The Open Cap Table format defines a package, or set, of JSON files, for storing data on transactions and business entities. Adopting the format means being able to export the \gls{capitalization-table} data according to the format.
+%
+The Manifest file contains metadata about the other files, which contain data. The data files either contain immutable entities which participate in \glspl{transaction} or the transactions themselves, which are the events that change the state of the entities. The data files are: Issuers, Stakeholders, Stock classes, Stock legend templates, Stock option plans, Vesting terms and Transactions.
+
+%Table~\ref{tab:open-cap-table-files} shows the files in the format.
+
+%\begin{table}[!h]
+%	\centering
+%	\begin{tabular}{ll}
+%		\toprule
+%		\textbf{File}          & \textbf{Contents} \\ \midrule
+%		Manifest               & Metadata          \\ %\midrule
+%		Issuers                & Static            \\ %\midrule
+%		Stakeholders           & Static            \\ %\midrule
+%		Stock classes          & Static            \\ %\midrule
+%		Stock legend templates & Static            \\ %\midrule
+%		Stock option plans     & Static            \\ %\midrule
+%		Vesting terms          & Static            \\ 
+%       Transactions           & Dynamic \\
+%		\bottomrule
+%	\end{tabular}
+%	\caption{Files in the Open Cap Table format}\label{tab:open-cap-table-files}
+%\end{table}
+
+%\subsection{The existence of an implied conceptual model within the data model}
+
+Although the OCF specifies a set of \textit{files} by defining its contents as JSON documents with associated JSON Schema, it is built on top of a conceptual model that underlies the data.
+%
+%This \textit{conceptual} model implied in the \textit{data} model is of great value for us. We will therefore present its organizing principles, describe its structure, and discuss the key components of the model while identifying the design patterns used to represent them.
+%
+%\subsection{Organizing principles of the underlying model}
+%
+%The format is given as a set of JSON Schemas. The schemas are used to validate the data files. Each schema is defined in a file ending with \verb|.schema.json|.
+%
+The schemas are organized according to two principles, which are reflected in the directory structure of the repository:
+
+\begin{itemize}
+	\item Technical building blocks: \textit{enums}, \textit{types} and \textit{objects}
+	\item Conceptual blocks: \textit{entities}, \glspl{transaction}, \textit{conversion mechanisms, rights and triggers}, and \textit{vestings}
+\end{itemize}
+
+Technically, types (in OCF terminology) define structures (expected keys and associated validation) that are reused in primitive objects (in the sense of JSON objects and documents) and in Enum (enumerations of constant values).
+%
+The two principles are mixed in the original OCF distribution, regarding the folder structure.
+%
+Figure~\ref{fig:ocf-directory-structure} shows the directory structure of the OCF distribution.
+
+\begin{figure}[!h]
+	\dirtree{%
+		.1 schema/.
+		.2 schema/enums/.
+		.2 schema/files/.
+		.2 schema/objects/.
+		.3 schema/transactions/.
+		.2 schema/primitives/.
+		.3 schema/files/.
+		.3 schema/objects/.
+		.3 schema/types/.
+		.2 schema/types/.
+		.3 schema/conversion\_mechanisms/.
+		.3 schema/conversion\_rights/.
+		.3 schema/conversion\_triggers/.
+		.3 schema/vesting/.
+	}
+	\caption{Directory structure of the OCF distribution.}\label{fig:ocf-directory-structure}
+\end{figure}
+
+
+%\subsection{Key components and patterns in the OCF}
+
+The OCF has three key logical components: tracing of transactions, rules for vesting, and rules for convertible securities, as shown in Table \ref{tab:ocf-key-components}.
+
+\begin{table}[!h]
+	\begin{tabularx}{\textwidth}{lX}
+		\toprule
+		\textbf{Transaction \& tracing} & \Glspl{transaction} that are linked by \gls{security} identifiers (i.e.,\ the issuance and cancellation of a \gls{security} refer to a common \gls{security} identifier) \\
+		\midrule
+		\textbf{Vesting}                & Composable rules for both schedule-based and event-based vesting                                                                               \\
+		\midrule
+		\textbf{Convertible securities} & Composable rules for converting securities, typically applied in the case of \gls{debt} that can be converted to stock shares                        \\
+		\bottomrule
+	\end{tabularx}
+	\caption{Key components in the OCF}\label{tab:ocf-key-components}
+\end{table}
+
+In the current research \cite{thesis:Stevaux}, these three logical components are defined. For the lack of space, this paper focus on the presentation of the \textbf{Transaction \& tracing} component and its related properties.
+
+\subsubsection{Transaction tracing system.}
+%
+Since a \gls{capitalization-table} is a snapshot taken after a collection of \glspl{transaction} have been accumulated, one component of the OCF is the support for traceable \glspl{transaction}. \Glspl{transaction} are objects recorded in the \glspl{transaction} file which refer to  \glspl{security}.  A \gls{security} is a financial \gls{asset} that can be bought and sold. Stocks, options, and \gls{debt} notes are all a kind of \gls{security}. 
+
+Securities do not have a specific schema in the OCF\@\textemdash{they are given implicitly as correlated identifiers}.
+%
+The key ideas behind the transaction tracing systems are:
+
+\begin{itemize}
+	\item Securities have an \textit{initial} and a \textit{terminal} transaction.
+	\item Issuances (including re-issuances) and \glspl{exercise} are initial \glspl{transaction}.
+	\item Cancellations, retractions, repurchases are terminal \glspl{transaction}.
+	\item Transfers are both initial and terminal \glspl{transaction}, as they extinguish the initial \gls{security} and create a new \gls{security} (the result security).
+	\item Partial cancellations are possible by extinguishing the original \gls{security} and generating a new \gls{security} with the remaining balance.
+	\item Partial transfers are possible by extinguishing the original \gls{security} and generating a new \gls{security} with the remaining balance
+\end{itemize}
+
+To compute the state of a  \gls{security}, it is necessary to trace all transactions associated with it. The state of a \gls{security} is equal to the sum of all issuances subtracted by the sum of all cancellations, repurchases, and transfers. This sequence of transactions makes the financial system auditable and traceable.
+
+
+\subsubsection{Advantages and Limitations of the OCF.}
+
+The choice of design patterns in OCF results in a data model that can fulfill the requirements of auditability (in special regarding transaction tracing) and flexibility. It consolidates a wealth of expert knowledge in the \glspl{capitalization-table} domain and the data format was explicitly designed to be auditable.
+
+%\subsection{Disadvantages and limitations of the OCF}
+
+JSON Schema can syntactically validate data, which is sufficient for a file or data exchange format. However, JSON Schema lacks expressiveness in terms of sets, relations, and logic. It is not possible to express constraints such as ''the total number of shares issued by the \gls{issuer} must equal the total number of shares held by all stakeholders''. Because JSON Schema lacks a closure operator, cyclical sequences of \gls{security} transactions cannot be ruled out. In addition, JSON Schema cannot reason about relational properties of instances or even distinguish between incorrect and correct transaction traces. All these validations are not included in the OCF model itself due to JSON Schema limitations.
+
+By employing a more robust modeling framework, such as Alloy with the Alloy Analyzer, we can improve the OCF's validation and expressiveness. This should preserve the available business knowledge in the OCF while making it more rigorous. In this manner, we can retain the data structure already defined in the OCF and add the Open Cap Table Coalition's knowledge about the constraints on financial transactions.
+
+
+
+
+

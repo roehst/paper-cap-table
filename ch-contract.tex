@@ -1,0 +1,167 @@
+\chapter{Case study}\label{ch:contract}
+
+We should now show a translation of a legal contract to an instance of our model. 
+
+The translation is done by programming a predicate that selects instances which match an expert's understanding of the contract. The process is not at all automatic, although the constraints added to the problem do prevent programming errors.
+
+Our particular case will be a typical Employee Stock Option Program (ESOP) contract. Those are both common and costly to operate, since they depend on all models we presented in~\ref{ch:transaction-tracing} and~\ref{ch:vesting-system}, and can involve hundreds of employees. They are both complex and large.
+
+\section{Employee Stock Option Programs}
+
+\Glspl{startup-company} award stock options to employees as part of their compensation. Stock options are only valuable if the underlying stock exceeds a certain price, so this form of incentive corresponds to the defining property of \glspl{startup-company}, which is to start small and grow extremely fast.
+
+Since they are complex contracts and issued in large numbers, they are an adequate test for our model. They depend on the invariants that we introduced in our models, which were only possible with a more powerful modeling language.
+
+\section{Characterizing an instance via a predicate}
+
+We can ask Alloy to find an instance for a vesting term with triggers in both Yes and No states, including use of our new operators.
+
+\begin{listing}[H]\label{fig:vs:run-vesting-term}
+	\begin{minted}{alloy}
+run { 
+    Yes + No = ExactDateTrigger.state
+    Yes + No = ExactEventTrigger.state
+    some AndTrigger
+    some OrTrigger
+    one VestingTerm
+} for 6
+\end{minted}
+	\caption{Run\textemdash{Vesting term}}
+\end{listing}
+
+\section{Visualizing the instance}
+
+From the instance, we can use the Alloy visualizer to find the following picture:
+
+\textbf{{PLACEHOLDER}}
+
+\section{A natural language, prose rendering of the instance}
+
+\subsection{issuance}
+
+The issuance has a simple wording, and the variation is in how the number and cost of shares and the price per share are expressed. Given two, the third is defined.
+
+\begin{multicols}{2}
+	\begin{figure}[H]\label{fig:doc-tt-issuance}
+		\centering
+		\begin{minipage}{0.4\textwidth}
+			\textbf{Share Investment Agreement}
+			\\
+			Hereby, the Investor agrees to invest in the Company the amount of 1,000 USD, in exchange for 20\% shares of the Company's stock.
+		\end{minipage}
+	\end{figure}
+	\columnbreak{}
+	\begin{figure}[H]\label{fig:doc-tt-issuance-2}
+		\centering
+		\begin{minipage}{0.4\textwidth}
+			\textbf{Share Investment Agreement}
+			\\ \@
+			Hereby, the Investor agrees to purchase 1,000\@shares of the Company's stock, at the price per share of USD 1.
+		\end{minipage}
+	\end{figure}
+\end{multicols}
+
+More complication is possible if \glspl{transaction} refer to past prices:
+
+\begin{multicols}{2}
+	\begin{figure}[H]\label{fig:doc-tt-issuance-3}
+		\centering
+		\begin{minipage}{0.4\textwidth}
+			\textbf{Share Investment Agreement}
+			\\
+			Hereby, the Investor agrees to invest in the Company in the amount of 1,000 USD, at 2 times the price per share paid by the Investor in the previous round.
+		\end{minipage}
+	\end{figure}
+	\columnbreak{}
+	\begin{figure}[H]\label{fig:doc-tt-issuance-4}
+		\centering
+		\begin{minipage}{0.4\textwidth}
+			\textbf{Share Investment Agreement}
+			\\
+			Hereby, the Investor agrees to purchase 1,000 shares of the Company's stock, at a 20\% discount from the price paid by the Investor in the previous round.
+		\end{minipage}
+	\end{figure}
+\end{multicols}
+
+\subsection{Cancellation}
+
+The cancellation is also simple, and the variation is in how the number of shares is expressed.
+
+\begin{multicols}{2}
+	\begin{figure}[H]\label{fig:doc-tt-cancellation}
+		\centering
+		\begin{minipage}{0.4\textwidth}
+			\textbf{Share Cancellation Agreement}
+			\\
+			Hereby the Company cancels 50\% of the stocks held by the Investor signed below.
+		\end{minipage}
+	\end{figure}
+	\columnbreak{}
+	\begin{figure}[H]\label{fig:doc-tt-cancellation-2}
+		\centering
+		\begin{minipage}{0.4\textwidth}
+			\textbf{Share Cancellation Agreement}
+			\\
+			Hereby the Company cancels 500 stocks held by the Investor signed below.
+		\end{minipage}
+	\end{figure}
+\end{multicols}
+
+\subsection{Transfer}
+
+The transfer is also simple, and the variation is in how the number of shares is expressed, and a receiving \gls{stakeholder} must also be defined:
+
+\begin{multicols}{2}
+	\begin{figure}[H]\label{fig:doc-tt-transfer}
+		\centering
+		\begin{minipage}{0.4\textwidth}
+			\textbf{Share Transfer Agreement}
+			\\
+			Hereby, the Investor signed below transfers 50\% of the stocks held to the Investor signed below.
+		\end{minipage}
+	\end{figure}
+	\columnbreak{}
+	\begin{figure}[H]\label{fig:doc-tt-transfer-2}
+		\centering
+		\begin{minipage}{0.4\textwidth}
+			\textbf{Share Transfer Agreement}
+			\\
+			Hereby, the Investor signed below transfers 500 stocks held to the Investor signed below.
+		\end{minipage}
+	\end{figure}
+\end{multicols}
+
+We have found examples that are typical of the difficulties in managing \glspl{capitalization-table} in spreadsheets or with no standards of any kind:
+
+If a transaction states the number of shares as a percentage, the number of shares must be calculated from the total number of shares issued, and this requires tracing back the chain of \glspl{transaction} and  \glspl{security}.  If \glspl{transaction} refer to past prices or quantities, we also need to trace back the chain of transactions and \glspl{security} to find the relevant information.
+
+This contract, in legal representation, would also have an unwieldy representation. That is why we need better formats and models for vesting systems: even the most basic vesting schedules are difficult to understand and represent.
+
+\begin{figure}[H]\label{fig:vs:contract}
+	\begin{minipage}{\linewidth}
+		This Stock Grant Contract (hereinafter referred to as the ``Contract'') is entered into and effective as of the second agreed-upon date (the ``Effective Date'').
+
+		\section*{Terms and Conditions}
+
+		1. The parties to this Contract are the granter (the ``Granter'') and the grantee (the ``Grantee'').
+		2. The Granter hereby grants the Grantee 7 authorized shares (the ``Shares'') of the Granter's stock, subject to the terms and conditions set forth herein.
+
+		\subsection*{Vesting Schedule}
+
+		1. First Condition: One share shall vest upon the simultaneous occurrence of the company reaching sales of USD 100M before the date promised to investors and another unspecified event, provided the state of affairs remains as originally agreed upon.
+		2. Second Condition: One share shall vest on the fifth agreed-upon date, assuming the state of affairs remains as initially agreed upon.
+		3. Third Condition: One share shall vest on the second agreed-upon date, given that the state of affairs has changed to the alternative agreed-upon state.
+		4. Fourth Condition: One share shall vest upon the occurrence of the company reaching sales of USD 100M before the date promised to investors, provided the state of affairs remains as initially agreed upon.
+		5. Fifth Condition: One share shall vest upon the occurrence of a second significant financial milestone, given that the state of affairs has changed to the alternative agreed-upon state.
+		6. Sixth Condition: Two shares shall vest upon the occurrence of either the fifth agreed-upon date or the simultaneous occurrence of the company reaching sales of USD 100M before the date promised to investors and another unspecified event, provided the state of affairs remains as initially agreed upon.
+
+		\subsection*{Miscellaneous}
+
+		This Contract and all rights and obligations hereunder shall be binding upon and inure to the benefit of the parties hereto and their respective heirs, successors, and assigns. This Contract may not be assigned by either party without the prior written consent of the other party. This Contract shall be governed by and construed in accordance with the laws of the jurisdiction where the Granter is located.
+	\end{minipage}
+	\caption{Vesting Term Contract}
+\end{figure}
+
+\section{Discussion}
+
+In practice, this means going over tens of legal documents and searching for the exact information needed. This is the problem that prompted the author into this field.

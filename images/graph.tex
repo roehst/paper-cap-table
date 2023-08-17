@@ -1,0 +1,744 @@
+\documentclass{article}
+\usepackage[x11names, svgnames, rgb]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{snakes,arrows,shapes}
+\usepackage{amsmath}
+%
+%
+
+%
+
+%
+
+\begin{document}
+\pagestyle{empty}
+%
+%
+%
+
+\enlargethispage{100cm}
+% Start of code
+% \begin{tikzpicture}[anchor=mid,>=latex',line join=bevel,]
+\begin{tikzpicture}[>=latex',line join=bevel,]
+  \pgfsetlinewidth{1bp}
+%%
+\pgfsetcolor{black}
+  % Edge: N29 -> N15
+  \definecolor{newcol}{rgb}{0.89,0.1,0.11};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (741.43bp,379.69bp) .. controls (793.55bp,374.68bp) and (883.44bp,364.01bp)  .. (912.0bp,348.0bp) .. controls (961.82bp,320.08bp) and (945.71bp,285.03bp)  .. (975.0bp,236.0bp) .. controls (976.82bp,232.95bp) and (978.9bp,229.89bp)  .. (987.83bp,218.37bp);
+  \draw (967.5bp,292.0bp) node {$$c$};
+  \draw (747.43bp,373.69bp) node {$$};
+  \draw (981.83bp,224.37bp) node {$$};
+  % Edge: N29 -> N15
+  \definecolor{newcol}{rgb}{1.0,0.5,0.0};
+  \pgfsetcolor{newcol}
+  \draw [<-,solid] (741.09bp,380.49bp) .. controls (799.05bp,375.17bp) and (865.63bp,365.98bp)  .. (884.0bp,348.0bp) .. controls (908.05bp,324.47bp) and (881.4bp,302.04bp)  .. (900.0bp,274.0bp) .. controls (916.22bp,249.55bp) and (943.66bp,230.8bp)  .. (966.28bp,218.43bp);
+  \draw (921.5bp,292.0bp) node {$trigger$};
+  \draw (747.09bp,386.49bp) node {$$};
+  \draw (960.28bp,224.43bp) node {$$};
+  % Edge: N29 -> N27
+  \definecolor{newcol}{rgb}{0.3,0.69,0.29};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (700.17bp,365.51bp) .. controls (699.12bp,354.36bp) and (699.17bp,339.85bp)  .. (704.0bp,328.0bp) .. controls (705.32bp,324.75bp) and (707.1bp,321.63bp)  .. (715.91bp,310.37bp);
+  \draw (727.0bp,338.0bp) node {$andOp2$};
+  \draw (694.17bp,359.51bp) node {$$};
+  \draw (709.91bp,316.37bp) node {$$};
+  % Edge: N29 -> N27
+  \definecolor{newcol}{rgb}{0.6,0.31,0.64};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (666.46bp,365.58bp) .. controls (650.51bp,355.5bp) and (637.38bp,342.06bp)  .. (647.0bp,328.0bp) .. controls (653.11bp,319.08bp) and (661.85bp,312.43bp)  .. (681.42bp,303.06bp);
+  \draw (671.5bp,338.0bp) node {$children$};
+  \draw (660.46bp,359.58bp) node {$$};
+  \draw (675.42bp,309.06bp) node {$$};
+  % Edge: N29 -> N25
+  \definecolor{newcol}{rgb}{1.0,0.5,0.0};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (664.53bp,380.34bp) .. controls (612.73bp,376.2bp) and (517.96bp,366.69bp)  .. (439.0bp,348.0bp) .. controls (402.87bp,339.45bp) and (363.41bp,325.83bp)  .. (322.83bp,310.45bp);
+  \draw (462.0bp,338.0bp) node {$andOp1$};
+  \draw (658.53bp,386.34bp) node {$$};
+  \draw (316.83bp,316.45bp) node {$$};
+  % Edge: N29 -> N25
+  \definecolor{newcol}{rgb}{0.6,0.31,0.64};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (664.65bp,372.22bp) .. controls (621.29bp,360.29bp) and (548.47bp,341.03bp)  .. (485.0bp,328.0bp) .. controls (435.18bp,317.77bp) and (422.12bp,318.62bp)  .. (372.0bp,310.0bp) .. controls (364.71bp,308.75bp) and (357.1bp,307.4bp)  .. (338.86bp,304.1bp);
+  \draw (594.5bp,338.0bp) node {$children$};
+  \draw (658.65bp,378.22bp) node {$$};
+  \draw (344.86bp,310.1bp) node {$$};
+  % Edge: N29 -> N5
+  \definecolor{newcol}{rgb}{0.65,0.34,0.16};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (741.43bp,381.74bp) .. controls (815.69bp,378.1bp) and (982.88bp,364.06bp)  .. (1111.0bp,310.0bp) .. controls (1151.2bp,293.04bp) and (1170.3bp,293.28bp)  .. (1193.0bp,256.0bp) .. controls (1218.9bp,213.42bp) and (1209.6bp,192.71bp)  .. (1199.0bp,144.0bp) .. controls (1198.4bp,141.47bp) and (1197.7bp,138.9bp)  .. (1192.7bp,126.29bp);
+  \draw (1219.5bp,246.0bp) node {$state$};
+  \draw (735.43bp,387.74bp) node {$$};
+  \draw (1186.7bp,132.29bp) node {$$};
+  % Edge: N15 -> N6
+  \definecolor{newcol}{rgb}{0.6,0.31,0.64};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (949.57bp,184.76bp) .. controls (945.0bp,183.76bp) and (940.43bp,182.82bp)  .. (936.0bp,182.0bp) .. controls (903.42bp,175.97bp) and (810.19bp,188.6bp)  .. (788.0bp,164.0bp) .. controls (781.52bp,156.81bp) and (780.01bp,146.7bp)  .. (781.96bp,126.27bp);
+  \draw (808.5bp,154.0bp) node {$shares$};
+  \draw (943.57bp,178.76bp) node {$$};
+  \draw (775.96bp,132.27bp) node {$$};
+  % Edge: N15 -> N5
+  \definecolor{newcol}{rgb}{0.89,0.1,0.11};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (1006.9bp,181.61bp) .. controls (1009.9bp,169.33bp) and (1015.7bp,153.44bp)  .. (1027.0bp,144.0bp) .. controls (1044.6bp,129.25bp) and (1104.6bp,118.95bp)  .. (1155.6bp,112.1bp);
+  \draw (1043.5bp,154.0bp) node {$state$};
+  \draw (1000.9bp,175.61bp) node {$$};
+  \draw (1149.6bp,118.1bp) node {$$};
+  % Edge: N27 -> N21
+  \draw [->,solid] (681.24bp,284.0bp) .. controls (647.27bp,278.46bp) and (608.44bp,269.4bp)  .. (598.0bp,256.0bp) .. controls (587.05bp,241.95bp) and (598.49bp,230.25bp)  .. (625.55bp,216.87bp);
+  \draw (607.5bp,246.0bp) node {$$c$};
+  \draw (675.24bp,290.0bp) node {$$};
+  \draw (619.55bp,222.87bp) node {$$};
+  % Edge: N27 -> N21
+  \definecolor{newcol}{rgb}{1.0,0.5,0.0};
+  \pgfsetcolor{newcol}
+  \draw [<-,solid] (681.25bp,283.24bp) .. controls (658.98bp,274.37bp) and (647.63bp,266.87bp)  .. (640.0bp,256.0bp) .. controls (631.11bp,243.34bp) and (641.79bp,229.24bp)  .. (654.35bp,218.48bp);
+  \draw (661.5bp,246.0bp) node {$trigger$};
+  \draw (675.25bp,277.24bp) node {$$};
+  \draw (648.35bp,224.48bp) node {$$};
+  % Edge: N27 -> N10
+  \definecolor{newcol}{rgb}{0.65,0.34,0.16};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (782.27bp,273.51bp) .. controls (790.6bp,268.77bp) and (798.66bp,262.97bp)  .. (805.0bp,256.0bp) .. controls (811.99bp,248.32bp) and (816.89bp,238.13bp)  .. (823.44bp,218.34bp);
+  \draw (845.5bp,246.0bp) node {$exactDate$};
+  \draw (776.27bp,267.51bp) node {$$};
+  \draw (817.44bp,224.34bp) node {$$};
+  % Edge: N27 -> N5
+  \draw [->,solid] (793.0bp,288.89bp) .. controls (821.37bp,285.13bp) and (854.66bp,276.24bp)  .. (878.0bp,256.0bp) .. controls (904.81bp,232.75bp) and (882.59bp,206.77bp)  .. (908.0bp,182.0bp) .. controls (941.75bp,149.09bp) and (1078.1bp,124.67bp)  .. (1155.8bp,112.79bp);
+  \draw (924.5bp,200.0bp) node {$state$};
+  \draw (799.0bp,294.89bp) node {$$};
+  \draw (1149.8bp,106.79bp) node {$$};
+  % Edge: N21 -> N18
+  \draw [->,solid] (709.44bp,181.71bp) .. controls (715.32bp,176.79bp) and (720.69bp,170.86bp)  .. (724.0bp,164.0bp) .. controls (727.86bp,155.99bp) and (728.21bp,151.83bp)  .. (724.0bp,144.0bp) .. controls (721.94bp,140.18bp) and (719.26bp,136.7bp)  .. (707.95bp,126.42bp);
+  \draw (737.0bp,154.0bp) node {$$t$};
+  \draw (703.44bp,175.71bp) node {$$};
+  \draw (701.95bp,132.42bp) node {$$};
+  % Edge: N21 -> N18
+  \definecolor{newcol}{rgb}{0.89,0.1,0.11};
+  \pgfsetcolor{newcol}
+  \draw [<-,solid] (625.64bp,184.44bp) .. controls (610.73bp,174.66bp) and (605.76bp,169.81bp)  .. (602.0bp,164.0bp) .. controls (591.68bp,148.05bp) and (607.54bp,134.65bp)  .. (626.65bp,125.07bp);
+  \draw (631.0bp,154.0bp) node {$conditions$};
+  \draw (619.64bp,190.44bp) node {$$};
+  \draw (620.65bp,131.07bp) node {$$};
+  % Edge: N21 -> N11
+  \definecolor{newcol}{rgb}{0.6,0.31,0.64};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (625.63bp,183.61bp) .. controls (614.57bp,178.66bp) and (603.68bp,172.24bp)  .. (595.0bp,164.0bp) .. controls (581.45bp,151.13bp) and (581.1bp,144.23bp)  .. (577.0bp,126.0bp) .. controls (570.89bp,98.809bp) and (579.89bp,67.806bp)  .. (593.02bp,36.401bp);
+  \draw (597.5bp,108.0bp) node {$shares$};
+  \draw (619.63bp,177.61bp) node {$$};
+  \draw (587.02bp,42.401bp) node {$$};
+  % Edge: N21 -> N5
+  \definecolor{newcol}{rgb}{0.89,0.1,0.11};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (734.25bp,192.72bp) .. controls (763.51bp,187.77bp) and (799.55bp,179.08bp)  .. (829.0bp,164.0bp) .. controls (841.06bp,157.83bp) and (839.58bp,149.41bp)  .. (852.0bp,144.0bp) .. controls (903.72bp,121.49bp) and (1069.1bp,112.96bp)  .. (1155.5bp,109.79bp);
+  \draw (868.5bp,154.0bp) node {$state$};
+  \draw (740.25bp,198.72bp) node {$$};
+  \draw (1152.5bp,103.79bp) node {$$};
+  % Edge: N20 -> N19
+  \draw [->,solid] (492.9bp,279.54bp) .. controls (507.4bp,274.34bp) and (522.0bp,266.83bp)  .. (533.0bp,256.0bp) .. controls (540.41bp,248.7bp) and (545.24bp,238.52bp)  .. (551.25bp,218.46bp);
+  \draw (555.5bp,246.0bp) node {$$c$};
+  \draw (498.9bp,285.54bp) node {$$};
+  \draw (545.25bp,224.46bp) node {$$};
+  % Edge: N20 -> N19
+  \definecolor{newcol}{rgb}{1.0,0.5,0.0};
+  \pgfsetcolor{newcol}
+  \draw [<-,solid] (451.78bp,273.78bp) .. controls (470.29bp,252.51bp) and (482.74bp,238.53bp)  .. (486.0bp,236.0bp) .. controls (494.5bp,229.41bp) and (504.43bp,223.49bp)  .. (514.03bp,218.47bp);
+  \draw (507.5bp,246.0bp) node {$trigger$};
+  \draw (445.78bp,267.78bp) node {$$};
+  \draw (508.03bp,224.47bp) node {$$};
+  % Edge: N20 -> N9
+  \definecolor{newcol}{rgb}{0.65,0.34,0.16};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (419.84bp,273.69bp) .. controls (411.27bp,262.87bp) and (403.9bp,248.65bp)  .. (410.0bp,236.0bp) .. controls (412.16bp,231.53bp) and (415.19bp,227.45bp)  .. (426.84bp,216.44bp);
+  \draw (438.5bp,246.0bp) node {$exactDate$};
+  \draw (413.84bp,267.69bp) node {$$};
+  \draw (420.84bp,222.44bp) node {$$};
+  % Edge: N20 -> N4
+  \draw [->,solid] (418.8bp,273.71bp) .. controls (413.66bp,268.32bp) and (408.3bp,262.16bp)  .. (404.0bp,256.0bp) .. controls (377.66bp,218.29bp) and (359.03bp,167.83bp)  .. (345.92bp,126.47bp);
+  \draw (397.5bp,200.0bp) node {$state$};
+  \draw (424.8bp,267.71bp) node {$$};
+  \draw (339.92bp,132.47bp) node {$$};
+  % Edge: N19 -> N6
+  \definecolor{newcol}{rgb}{0.6,0.31,0.64};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (608.47bp,183.66bp) .. controls (629.59bp,177.17bp) and (650.87bp,169.78bp)  .. (660.0bp,164.0bp) .. controls (670.36bp,157.44bp) and (668.63bp,150.54bp)  .. (679.0bp,144.0bp) .. controls (690.91bp,136.5bp) and (723.14bp,126.47bp)  .. (759.73bp,116.18bp);
+  \draw (699.5bp,154.0bp) node {$shares$};
+  \draw (605.47bp,177.66bp) node {$$};
+  \draw (753.73bp,122.18bp) node {$$};
+  % Edge: N19 -> N4
+  \definecolor{newcol}{rgb}{0.89,0.1,0.11};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (512.68bp,181.54bp) .. controls (473.75bp,165.09bp) and (415.95bp,140.67bp)  .. (368.34bp,120.55bp);
+  \draw (483.5bp,154.0bp) node {$state$};
+  \draw (506.68bp,175.54bp) node {$$};
+  \draw (374.34bp,126.55bp) node {$$};
+  % Edge: N26 -> N16
+  \draw [->,solid] (1354.5bp,273.58bp) .. controls (1339.6bp,268.09bp) and (1323.1bp,261.91bp)  .. (1308.0bp,256.0bp) .. controls (1286.5bp,247.56bp) and (1281.8bp,243.55bp)  .. (1260.0bp,236.0bp) .. controls (1240.4bp,229.21bp) and (1218.6bp,222.8bp)  .. (1188.4bp,214.53bp);
+  \draw (1317.5bp,246.0bp) node {$$c$};
+  \draw (1348.5bp,267.58bp) node {$$};
+  \draw (1194.4bp,220.53bp) node {$$};
+  % Edge: N26 -> N16
+  \definecolor{newcol}{rgb}{1.0,0.5,0.0};
+  \pgfsetcolor{newcol}
+  \draw [<-,solid] (1375.0bp,273.51bp) .. controls (1360.5bp,263.73bp) and (1355.1bp,259.85bp)  .. (1350.0bp,256.0bp) .. controls (1339.2bp,247.81bp) and (1339.2bp,241.86bp)  .. (1327.0bp,236.0bp) .. controls (1320.7bp,232.98bp) and (1243.3bp,219.46bp)  .. (1188.4bp,210.14bp);
+  \draw (1371.5bp,246.0bp) node {$trigger$};
+  \draw (1369.0bp,267.51bp) node {$$};
+  \draw (1194.4bp,204.14bp) node {$$};
+  % Edge: N26 -> N8
+  \draw [->,solid] (1414.3bp,273.93bp) .. controls (1421.7bp,262.96bp) and (1431.7bp,248.48bp)  .. (1441.0bp,236.0bp) .. controls (1443.3bp,232.97bp) and (1445.7bp,229.84bp)  .. (1454.8bp,218.26bp);
+  \draw (1472.0bp,246.0bp) node {$exactEvent$};
+  \draw (1420.3bp,267.93bp) node {$$};
+  \draw (1448.8bp,224.26bp) node {$$};
+  % Edge: N26 -> N5
+  \definecolor{newcol}{rgb}{0.65,0.34,0.16};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (1404.7bp,273.71bp) .. controls (1404.9bp,261.48bp) and (1402.9bp,245.61bp)  .. (1393.0bp,236.0bp) .. controls (1355.3bp,199.31bp) and (1319.9bp,246.99bp)  .. (1276.0bp,218.0bp) .. controls (1243.7bp,196.66bp) and (1256.2bp,172.51bp)  .. (1230.0bp,144.0bp) .. controls (1226.5bp,140.18bp) and (1222.5bp,136.48bp)  .. (1209.8bp,126.28bp);
+  \draw (1292.5bp,200.0bp) node {$state$};
+  \draw (1398.7bp,267.71bp) node {$$};
+  \draw (1203.8bp,132.28bp) node {$$};
+  % Edge: N16 -> N6
+  \definecolor{newcol}{rgb}{0.6,0.31,0.64};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (1116.2bp,181.58bp) .. controls (1102.1bp,168.95bp) and (1081.4bp,152.62bp)  .. (1060.0bp,144.0bp) .. controls (1018.2bp,127.14bp) and (889.73bp,116.12bp)  .. (814.11bp,110.73bp);
+  \draw (1112.5bp,154.0bp) node {$shares$};
+  \draw (1110.2bp,175.58bp) node {$$};
+  \draw (820.11bp,116.73bp) node {$$};
+  % Edge: N16 -> N5
+  \definecolor{newcol}{rgb}{0.89,0.1,0.11};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (1143.4bp,181.65bp) .. controls (1150.5bp,168.7bp) and (1160.3bp,150.76bp)  .. (1173.6bp,126.3bp);
+  \draw (1178.5bp,154.0bp) node {$state$};
+  \draw (1137.4bp,175.65bp) node {$$};
+  \draw (1167.6bp,132.3bp) node {$$};
+  % Edge: N25 -> N22
+  \draw [->,solid] (221.22bp,286.25bp) .. controls (172.61bp,281.27bp) and (108.37bp,271.89bp)  .. (88.0bp,256.0bp) .. controls (79.314bp,249.23bp) and (73.547bp,238.76bp)  .. (66.399bp,218.3bp);
+  \draw (97.5bp,246.0bp) node {$$c$};
+  \draw (215.22bp,292.25bp) node {$$};
+  \draw (60.399bp,224.3bp) node {$$};
+  % Edge: N25 -> N22
+  \definecolor{newcol}{rgb}{1.0,0.5,0.0};
+  \pgfsetcolor{newcol}
+  \draw [<-,solid] (221.11bp,273.99bp) .. controls (197.57bp,266.22bp) and (183.74bp,261.25bp)  .. (171.0bp,256.0bp) .. controls (144.35bp,245.02bp) and (115.29bp,230.04bp)  .. (94.037bp,218.49bp);
+  \draw (192.5bp,246.0bp) node {$trigger$};
+  \draw (215.11bp,279.99bp) node {$$};
+  \draw (88.037bp,224.49bp) node {$$};
+  % Edge: N25 -> N7
+  \draw [->,solid] (250.87bp,273.66bp) .. controls (243.8bp,268.57bp) and (236.66bp,262.58bp)  .. (231.0bp,256.0bp) .. controls (223.92bp,247.77bp) and (218.05bp,237.44bp)  .. (209.21bp,218.14bp);
+  \draw (262.0bp,246.0bp) node {$exactEvent$};
+  \draw (244.87bp,267.66bp) node {$$};
+  \draw (203.21bp,224.14bp) node {$$};
+  % Edge: N25 -> N4
+  \definecolor{newcol}{rgb}{0.65,0.34,0.16};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (286.62bp,273.6bp) .. controls (288.71bp,268.0bp) and (290.99bp,261.75bp)  .. (293.0bp,256.0bp) .. controls (307.43bp,214.64bp) and (322.96bp,166.29bp)  .. (335.61bp,126.27bp);
+  \draw (334.5bp,200.0bp) node {$state$};
+  \draw (280.62bp,267.6bp) node {$$};
+  \draw (329.61bp,132.27bp) node {$$};
+  % Edge: N22 -> N17
+  \draw [->,solid] (59.817bp,181.59bp) .. controls (58.585bp,170.35bp) and (58.566bp,155.69bp)  .. (64.0bp,144.0bp) .. controls (65.604bp,140.55bp) and (67.73bp,137.3bp)  .. (77.689bp,126.39bp);
+  \draw (73.0bp,154.0bp) node {$$t$};
+  \draw (53.817bp,175.59bp) node {$$};
+  \draw (71.689bp,132.39bp) node {$$};
+  % Edge: N22 -> N17
+  \definecolor{newcol}{rgb}{0.89,0.1,0.11};
+  \pgfsetcolor{newcol}
+  \draw [<-,solid] (72.878bp,181.76bp) .. controls (79.387bp,169.41bp) and (80.749bp,166.67bp)  .. (82.0bp,164.0bp) .. controls (87.856bp,151.53bp) and (93.61bp,137.04bp)  .. (97.763bp,126.07bp);
+  \draw (120.0bp,154.0bp) node {$conditions$};
+  \draw (66.878bp,175.76bp) node {$$};
+  \draw (91.763bp,132.07bp) node {$$};
+  % Edge: N22 -> N12
+  \definecolor{newcol}{rgb}{0.6,0.31,0.64};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (45.443bp,181.63bp) .. controls (32.864bp,167.87bp) and (16.966bp,147.45bp)  .. (10.0bp,126.0bp) .. controls (1.5017bp,99.83bp) and (8.2667bp,68.63bp)  .. (19.337bp,36.438bp);
+  \draw (30.5bp,108.0bp) node {$shares$};
+  \draw (39.443bp,175.63bp) node {$$};
+  \draw (13.337bp,42.438bp) node {$$};
+  % Edge: N22 -> N4
+  \definecolor{newcol}{rgb}{0.89,0.1,0.11};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (116.93bp,181.54bp) .. controls (171.83bp,163.77bp) and (255.5bp,136.68bp)  .. (313.81bp,117.8bp);
+  \draw (243.5bp,154.0bp) node {$state$};
+  \draw (110.93bp,175.54bp) node {$$};
+  \draw (307.81bp,123.8bp) node {$$};
+  % Edge: N28 -> N27
+  \definecolor{newcol}{rgb}{0.6,0.31,0.64};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (1435.6bp,378.66bp) .. controls (1320.3bp,364.52bp) and (954.4bp,319.66bp)  .. (792.77bp,299.84bp);
+  \draw (1193.5bp,338.0bp) node {$children$};
+  \draw (1429.6bp,372.66bp) node {$$};
+  \draw (798.77bp,305.84bp) node {$$};
+  % Edge: N28 -> N27
+  \definecolor{newcol}{rgb}{0.22,0.49,0.72};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (1435.6bp,382.05bp) .. controls (1356.3bp,379.56bp) and (1158.7bp,371.35bp)  .. (995.0bp,348.0bp) .. controls (929.25bp,338.62bp) and (855.21bp,322.22bp)  .. (792.97bp,307.25bp);
+  \draw (1014.5bp,338.0bp) node {$orOp2$};
+  \draw (1429.6bp,388.05bp) node {$$};
+  \draw (786.97bp,313.25bp) node {$$};
+  % Edge: N28 -> N26
+  \definecolor{newcol}{rgb}{0.6,0.31,0.64};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (1435.9bp,374.36bp) .. controls (1422.2bp,369.1bp) and (1408.0bp,360.84bp)  .. (1400.0bp,348.0bp) .. controls (1395.0bp,340.03bp) and (1394.3bp,330.09bp)  .. (1397.2bp,310.14bp);
+  \draw (1424.5bp,338.0bp) node {$children$};
+  \draw (1441.9bp,368.36bp) node {$$};
+  \draw (1391.2bp,316.14bp) node {$$};
+  % Edge: N28 -> N26
+  \definecolor{newcol}{rgb}{0.3,0.69,0.29};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (1466.8bp,365.92bp) .. controls (1463.3bp,354.39bp) and (1457.6bp,339.29bp)  .. (1449.0bp,328.0bp) .. controls (1446.1bp,324.21bp) and (1442.7bp,320.63bp)  .. (1431.0bp,310.45bp);
+  \draw (1479.5bp,338.0bp) node {$orOp1$};
+  \draw (1460.8bp,359.92bp) node {$$};
+  \draw (1425.0bp,316.45bp) node {$$};
+  % Edge: N28 -> N24
+  \definecolor{newcol}{rgb}{0.89,0.1,0.11};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (1506.4bp,366.53bp) .. controls (1517.1bp,361.07bp) and (1528.8bp,354.67bp)  .. (1539.0bp,348.0bp) .. controls (1540.1bp,347.29bp) and (1559.4bp,331.67bp)  .. (1585.7bp,310.35bp);
+  \draw (1572.5bp,338.0bp) node {$$c$};
+  \draw (1500.4bp,360.53bp) node {$$};
+  \draw (1579.7bp,316.35bp) node {$$};
+  % Edge: N28 -> N24
+  \definecolor{newcol}{rgb}{1.0,0.5,0.0};
+  \pgfsetcolor{newcol}
+  \draw [<-,solid] (1506.3bp,369.3bp) .. controls (1548.1bp,358.43bp) and (1561.8bp,366.23bp)  .. (1583.0bp,348.0bp) .. controls (1594.2bp,338.35bp) and (1600.4bp,322.48bp)  .. (1603.6bp,310.26bp);
+  \draw (1618.5bp,338.0bp) node {$trigger$};
+  \draw (1512.3bp,375.3bp) node {$$};
+  \draw (1597.6bp,316.26bp) node {$$};
+  % Edge: N28 -> N5
+  \definecolor{newcol}{rgb}{0.65,0.34,0.16};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (1491.4bp,365.52bp) .. controls (1496.1bp,360.39bp) and (1500.4bp,354.42bp)  .. (1503.0bp,348.0bp) .. controls (1530.5bp,279.53bp) and (1552.1bp,239.64bp)  .. (1506.0bp,182.0bp) .. controls (1470.7bp,137.8bp) and (1298.7bp,118.42bp)  .. (1210.4bp,110.93bp);
+  \draw (1548.5bp,246.0bp) node {$state$};
+  \draw (1485.4bp,359.52bp) node {$$};
+  \draw (1216.4bp,116.93bp) node {$$};
+  % Edge: N24 -> N14
+  \draw [->,solid] (1647.6bp,273.59bp) .. controls (1654.5bp,268.87bp) and (1660.8bp,263.06bp)  .. (1665.0bp,256.0bp) .. controls (1669.8bp,247.96bp) and (1671.4bp,238.0bp)  .. (1671.0bp,218.07bp);
+  \draw (1680.0bp,246.0bp) node {$$t$};
+  \draw (1641.6bp,267.59bp) node {$$};
+  \draw (1665.0bp,224.07bp) node {$$};
+  % Edge: N24 -> N14
+  \definecolor{newcol}{rgb}{0.89,0.1,0.11};
+  \pgfsetcolor{newcol}
+  \draw [<-,solid] (1600.9bp,273.95bp) .. controls (1597.6bp,254.02bp) and (1598.2bp,244.06bp)  .. (1603.0bp,236.0bp) .. controls (1607.9bp,227.86bp) and (1615.3bp,221.5bp)  .. (1623.5bp,216.57bp);
+  \draw (1632.0bp,246.0bp) node {$conditions$};
+  \draw (1606.9bp,267.95bp) node {$$};
+  \draw (1617.5bp,222.57bp) node {$$};
+  % Edge: N24 -> N13
+  \definecolor{newcol}{rgb}{0.6,0.31,0.64};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (1661.3bp,274.19bp) .. controls (1672.4bp,269.34bp) and (1683.6bp,263.32bp)  .. (1693.0bp,256.0bp) .. controls (1728.3bp,228.51bp) and (1728.7bp,208.45bp)  .. (1734.0bp,164.0bp) .. controls (1735.0bp,155.17bp) and (1739.1bp,151.31bp)  .. (1734.0bp,144.0bp) .. controls (1721.7bp,126.17bp) and (1699.0bp,117.41bp)  .. (1668.5bp,111.15bp);
+  \draw (1751.5bp,200.0bp) node {$shares$};
+  \draw (1655.3bp,268.19bp) node {$$};
+  \draw (1674.5bp,117.15bp) node {$$};
+  % Edge: N24 -> N5
+  \definecolor{newcol}{rgb}{0.89,0.1,0.11};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (1600.1bp,273.59bp) .. controls (1585.2bp,236.43bp) and (1550.4bp,152.1bp)  .. (1539.0bp,144.0bp) .. controls (1513.5bp,125.91bp) and (1308.2bp,114.63bp)  .. (1210.5bp,110.14bp);
+  \draw (1592.5bp,200.0bp) node {$state$};
+  \draw (1594.1bp,267.59bp) node {$$};
+  \draw (1216.5bp,104.14bp) node {$$};
+  % Edge: N23 -> N15
+  \definecolor{newcol}{rgb}{0.65,0.34,0.16};
+  \pgfsetcolor{newcol}
+  \draw [<-,solid] (1013.8bp,280.04bp) .. controls (995.74bp,270.36bp) and (988.16bp,264.1bp)  .. (983.0bp,256.0bp) .. controls (975.59bp,244.36bp) and (981.83bp,229.7bp)  .. (989.39bp,218.45bp);
+  \draw (992.0bp,246.0bp) node {$$t$};
+  \draw (1007.8bp,286.04bp) node {$$};
+  \draw (995.39bp,224.45bp) node {$$};
+  % Edge: N23 -> N15
+  \definecolor{newcol}{rgb}{0.89,0.1,0.11};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (1038.4bp,273.73bp) .. controls (1033.2bp,268.43bp) and (1028.0bp,262.32bp)  .. (1024.0bp,256.0bp) .. controls (1018.8bp,247.74bp) and (1014.7bp,237.94bp)  .. (1008.3bp,218.46bp);
+  \draw (1053.0bp,246.0bp) node {$conditions$};
+  \draw (1032.4bp,267.73bp) node {$$};
+  \draw (1014.3bp,224.46bp) node {$$};
+  % Edge: N23 -> N19
+  \definecolor{newcol}{rgb}{0.65,0.34,0.16};
+  \pgfsetcolor{newcol}
+  \draw [<-,solid] (1013.6bp,276.99bp) .. controls (1001.9bp,274.37bp) and (1001.0bp,274.18bp)  .. (1000.0bp,274.0bp) .. controls (952.43bp,265.15bp) and (826.64bp,276.91bp)  .. (783.0bp,256.0bp) .. controls (771.94bp,250.7bp) and (774.95bp,241.51bp)  .. (764.0bp,236.0bp) .. controls (705.21bp,206.4bp) and (681.6bp,230.61bp)  .. (617.0bp,218.0bp) .. controls (614.11bp,217.44bp) and (611.16bp,216.81bp)  .. (608.18bp,216.14bp);
+  \draw (792.0bp,246.0bp) node {$$t$};
+  \draw (1007.6bp,270.99bp) node {$$};
+  \draw (614.18bp,210.14bp) node {$$};
+  % Edge: N23 -> N19
+  \definecolor{newcol}{rgb}{0.89,0.1,0.11};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (1013.6bp,276.89bp) .. controls (1009.0bp,275.77bp) and (1004.4bp,274.78bp)  .. (1000.0bp,274.0bp) .. controls (934.64bp,262.6bp) and (762.15bp,284.0bp)  .. (702.0bp,256.0bp) .. controls (690.88bp,250.83bp) and (693.53bp,242.28bp)  .. (683.0bp,236.0bp) .. controls (682.6bp,235.76bp) and (650.74bp,227.12bp)  .. (608.44bp,215.68bp);
+  \draw (731.0bp,246.0bp) node {$conditions$};
+  \draw (1019.6bp,270.89bp) node {$$};
+  \draw (602.44bp,221.68bp) node {$$};
+  % Edge: N23 -> N16
+  \definecolor{newcol}{rgb}{0.65,0.34,0.16};
+  \pgfsetcolor{newcol}
+  \draw [<-,solid] (1072.7bp,273.65bp) .. controls (1092.4bp,250.21bp) and (1108.2bp,231.61bp)  .. (1119.4bp,218.3bp);
+  \draw (1111.0bp,246.0bp) node {$$t$};
+  \draw (1066.7bp,267.65bp) node {$$};
+  \draw (1113.4bp,224.3bp) node {$$};
+  % Edge: N23 -> N16
+  \definecolor{newcol}{rgb}{0.89,0.1,0.11};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (1102.3bp,274.04bp) .. controls (1110.2bp,269.26bp) and (1117.6bp,263.31bp)  .. (1123.0bp,256.0bp) .. controls (1128.7bp,248.32bp) and (1131.6bp,238.45bp)  .. (1134.2bp,218.4bp);
+  \draw (1160.0bp,246.0bp) node {$conditions$};
+  \draw (1096.3bp,268.04bp) node {$$};
+  \draw (1128.2bp,224.4bp) node {$$};
+  % Edge: N23 -> N13
+  \definecolor{newcol}{rgb}{0.22,0.49,0.72};
+  \pgfsetcolor{newcol}
+  \draw [->,solid] (1102.4bp,289.4bp) .. controls (1163.9bp,286.39bp) and (1270.7bp,278.07bp)  .. (1302.0bp,256.0bp) .. controls (1332.4bp,234.58bp) and (1311.7bp,204.86bp)  .. (1341.0bp,182.0bp) .. controls (1419.4bp,120.87bp) and (1541.7bp,110.0bp)  .. (1613.8bp,108.5bp);
+  \draw (1387.0bp,200.0bp) node {$authorizedShares$};
+  \draw (1108.4bp,295.4bp) node {$$};
+  \draw (1607.8bp,114.5bp) node {$$};
+  % Edge: N18 -> N11
+  \draw [->,solid] (657.37bp,89.614bp) .. controls (647.35bp,76.838bp) and (633.57bp,59.267bp)  .. (615.6bp,36.35bp);
+  \draw (689.0bp,63.0bp) node {$authorizedShares$};
+  \draw (651.37bp,83.614bp) node {$$};
+  \draw (609.6bp,42.35bp) node {$$};
+  % Edge: N17 -> N12
+  \draw [->,solid] (88.787bp,89.614bp) .. controls (77.503bp,76.718bp) and (61.943bp,58.935bp)  .. (42.181bp,36.35bp);
+  \draw (119.0bp,63.0bp) node {$authorizedShares$};
+  \draw (82.787bp,83.614bp) node {$$};
+  \draw (36.181bp,42.35bp) node {$$};
+  % Edge: N14 -> N13
+  \draw [->,solid] (1651.9bp,181.71bp) .. controls (1647.9bp,176.41bp) and (1644.1bp,170.3bp)  .. (1642.0bp,164.0bp) .. controls (1639.1bp,155.58bp) and (1638.2bp,146.0bp)  .. (1638.7bp,126.31bp);
+  \draw (1688.0bp,154.0bp) node {$authorizedShares$};
+  \draw (1645.9bp,175.71bp) node {$$};
+  \draw (1632.7bp,132.31bp) node {$$};
+  % Node: N29
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (741.0bp,402.0bp) -- (665.0bp,402.0bp) -- (665.0bp,366.0bp) -- (741.0bp,366.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (703.0bp,384.0bp) node {$AndTrigger$};
+\end{scope}
+  % Node: N15
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (1058.0bp,218.0bp) -- (950.0bp,218.0bp) -- (950.0bp,182.0bp) -- (1058.0bp,182.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (1004.0bp,200.0bp) node {$VestingCondition0$};
+\end{scope}
+  % Node: N27
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (792.5bp,310.0bp) -- (681.5bp,310.0bp) -- (681.5bp,274.0bp) -- (792.5bp,274.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (737.0bp,292.0bp) node {$ExactDateTrigger0$};
+\end{scope}
+  % Node: N25
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (338.5bp,310.0bp) -- (221.5bp,310.0bp) -- (221.5bp,274.0bp) -- (338.5bp,274.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (280.0bp,292.0bp) node {$ExactEventTrigger1$};
+\end{scope}
+  % Node: N5
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (1210.0bp,126.0bp) -- (1156.0bp,126.0bp) -- (1156.0bp,90.0bp) -- (1210.0bp,90.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (1183.0bp,108.0bp) node {$No$};
+\end{scope}
+  % Node: N6
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (814.0bp,126.0bp) -- (760.0bp,126.0bp) -- (760.0bp,90.0bp) -- (814.0bp,90.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (787.0bp,108.0bp) node {$1$};
+\end{scope}
+  % Node: N21
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (734.0bp,218.0bp) -- (626.0bp,218.0bp) -- (626.0bp,182.0bp) -- (734.0bp,182.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (680.0bp,200.0bp) node {$VestingCondition2$};
+\end{scope}
+  % Node: N10
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (854.0bp,218.0bp) -- (800.0bp,218.0bp) -- (800.0bp,182.0bp) -- (854.0bp,182.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (827.0bp,200.0bp) node {$Date5$};
+\end{scope}
+  % Node: N18
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (715.0bp,126.0bp) -- (627.0bp,126.0bp) -- (627.0bp,90.0bp) -- (715.0bp,90.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (671.0bp,108.0bp) node {$VestingTerm2$};
+\end{scope}
+  % Node: N11
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (629.0bp,36.0bp) -- (575.0bp,36.0bp) -- (575.0bp,0.0bp) -- (629.0bp,0.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (602.0bp,18.0bp) node {$4$};
+\end{scope}
+  % Node: N20
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (492.5bp,310.0bp) -- (381.5bp,310.0bp) -- (381.5bp,274.0bp) -- (492.5bp,274.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (437.0bp,292.0bp) node {$ExactDateTrigger1$};
+\end{scope}
+  % Node: N19
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (608.0bp,218.0bp) -- (500.0bp,218.0bp) -- (500.0bp,182.0bp) -- (608.0bp,182.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (554.0bp,200.0bp) node {$VestingCondition1$};
+\end{scope}
+  % Node: N9
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (481.0bp,218.0bp) -- (427.0bp,218.0bp) -- (427.0bp,182.0bp) -- (481.0bp,182.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (454.0bp,200.0bp) node {$Date2$};
+\end{scope}
+  % Node: N4
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (368.0bp,126.0bp) -- (314.0bp,126.0bp) -- (314.0bp,90.0bp) -- (368.0bp,90.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (341.0bp,108.0bp) node {$Yes$};
+\end{scope}
+  % Node: N26
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (1461.5bp,310.0bp) -- (1344.5bp,310.0bp) -- (1344.5bp,274.0bp) -- (1461.5bp,274.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (1403.0bp,292.0bp) node {$ExactEventTrigger0$};
+\end{scope}
+  % Node: N16
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (1188.0bp,218.0bp) -- (1080.0bp,218.0bp) -- (1080.0bp,182.0bp) -- (1188.0bp,182.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (1134.0bp,200.0bp) node {$VestingCondition4$};
+\end{scope}
+  % Node: N8
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (1496.5bp,218.0bp) -- (1441.5bp,218.0bp) -- (1441.5bp,182.0bp) -- (1496.5bp,182.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (1469.0bp,200.0bp) node {$Event0$};
+\end{scope}
+  % Node: N22
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (117.0bp,218.0bp) -- (9.0bp,218.0bp) -- (9.0bp,182.0bp) -- (117.0bp,182.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (63.0bp,200.0bp) node {$VestingCondition3$};
+\end{scope}
+  % Node: N7
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (271.0bp,218.0bp) -- (135.0bp,218.0bp) -- (135.0bp,182.0bp) -- (271.0bp,182.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (203.0bp,200.0bp) node {$Event1\n(this/pastEvents)$};
+\end{scope}
+  % Node: N17
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (148.0bp,126.0bp) -- (60.0bp,126.0bp) -- (60.0bp,90.0bp) -- (148.0bp,90.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (104.0bp,108.0bp) node {$VestingTerm1$};
+\end{scope}
+  % Node: N12
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (54.0bp,36.0bp) -- (0.0bp,36.0bp) -- (0.0bp,0.0bp) -- (54.0bp,0.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (27.0bp,18.0bp) node {$2$};
+\end{scope}
+  % Node: N28
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (1506.0bp,402.0bp) -- (1436.0bp,402.0bp) -- (1436.0bp,366.0bp) -- (1506.0bp,366.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (1471.0bp,384.0bp) node {$OrTrigger$};
+\end{scope}
+  % Node: N24
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (1661.0bp,310.0bp) -- (1553.0bp,310.0bp) -- (1553.0bp,274.0bp) -- (1661.0bp,274.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (1607.0bp,292.0bp) node {$VestingCondition5$};
+\end{scope}
+  % Node: N14
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (1712.0bp,218.0bp) -- (1624.0bp,218.0bp) -- (1624.0bp,182.0bp) -- (1712.0bp,182.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (1668.0bp,200.0bp) node {$VestingTerm0$};
+\end{scope}
+  % Node: N13
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (1668.0bp,126.0bp) -- (1614.0bp,126.0bp) -- (1614.0bp,90.0bp) -- (1668.0bp,90.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (1641.0bp,108.0bp) node {$3$};
+\end{scope}
+  % Node: N23
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (1102.0bp,310.0bp) -- (1014.0bp,310.0bp) -- (1014.0bp,274.0bp) -- (1102.0bp,274.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (1058.0bp,292.0bp) node {$VestingTerm3$};
+\end{scope}
+  % Node: N0
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (1659.5bp,402.0bp) -- (1524.5bp,402.0bp) -- (1524.5bp,366.0bp) -- (1659.5bp,366.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (1592.0bp,384.0bp) node {$Date4\n(this/currentDate)$};
+\end{scope}
+  % Node: N1
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (1732.0bp,402.0bp) -- (1678.0bp,402.0bp) -- (1678.0bp,366.0bp) -- (1732.0bp,366.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (1705.0bp,384.0bp) node {$Date3$};
+\end{scope}
+  % Node: N2
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (1804.0bp,402.0bp) -- (1750.0bp,402.0bp) -- (1750.0bp,366.0bp) -- (1804.0bp,366.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (1777.0bp,384.0bp) node {$Date1$};
+\end{scope}
+  % Node: N3
+\begin{scope}
+  \definecolor{strokecol}{rgb}{1.0,0.84,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{1.0,0.84,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [solid] (1876.0bp,402.0bp) -- (1822.0bp,402.0bp) -- (1822.0bp,366.0bp) -- (1876.0bp,366.0bp) -- cycle;
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (1849.0bp,384.0bp) node {$Date0$};
+\end{scope}
+%
+\end{tikzpicture}
+% End of code
+
+%
+\end{document}
+%
+
+
+

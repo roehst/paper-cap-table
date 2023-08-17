@@ -1,0 +1,22 @@
+\section{Introduction}\label{ch:introduction}
+
+\Glspl{capitalization-table} are essential documents required for conducting \gls{venture-capital} investments in \glspl{startup-company}. A capitalization table depicts the ownership structure of a company, and this structure is subject to change over time due to new investments, transfers, and acquisitions.
+
+The cost and risk associated with validating \glspl{capitalization-table} have a significant effect on the business market. According to the accounting firm KPMG \cite{kpmgGlobalVenture}, 38,644 \gls{venture-capital} transactions were closed in 2021, with each transaction requiring tens of hours of attorneys and accountants. In 2021, investors contributed USD 671 billion to the \gls{venture-capital} market, while exits (including \glspl{ipo} and \glspl{acquisition}) amounted to USD 1,378 billion. Apple, Google, NVIDIA, Amazon, and Microsoft alone were worth USD 9 trillion as of June 2023. All companies started as venture capital investments. Their aggregate market size is comparable only to the United States' (USD 23 trillion) and China's (USD 17.7 trillion) gross domestic product.
+
+
+Errors in \glspl{capitalization-table} can be costly and may lead to potential legal disputes. Traditionally, \glspl{capitalization-table} have been maintained in spreadsheets, a method that is error-prone and difficult to audit. Furthermore, spreadsheets do not adhere to a standard format, requiring all parties involved in a transaction to agree on a uniform format before exchanging data.
+%
+Validating the \glspl{transaction} that led to the current \gls{capitalization-table} is the only method to assure that a \gls{capitalization-table} accurately reflects the correct stakes of each \gls{stakeholder}.
+
+Due to the inherent difficulties associated with maintaining \glspl{capitalization-table} in spreadsheets, a number of companies now provide \gls{capitalization-table} management as a service. These companies offer a web-based interface for managing \glspl{capitalization-table} in an attempt to streamline the process and reduce errors. However, the underlying data models are proprietary, and the criteria for updating the \glspl{capitalization-table} are often not explicitly defined.
+
+The Open Cap Table Coalition \cite{octc}, which is comprised of industry members, is currently working on a standard for \glspl{capitalization-table} to address these issues.
+%
+The standard is based on a publicly available data model that can be used to develop software systems that handle the \glspl{capitalization-table} data structure. Nevertheless, the data model still lacks a formal specification of the criteria for updating the \glspl{capitalization-table}. 
+
+The proposed standard models \glspl{security} as entities and \glspl{transaction} as events, in a pattern commonly known as event sourcing\cite{evans2004ddd}. The current state of any \gls{capitalization-table} must be computed by replaying all events on an initial state, but the standard provides no clear guidance on the semantics of each type of transaction. Appendix \ref{app:forum} presents a list of questions that were posted to the OCTC's GitHub repository discussion board, regarding the interpretation of various transactions.
+%
+This is an unfortunate consequence of the syntax-focused semantics of the selected technology, JSON Schema, which cannot accommodate the specification of transaction rules.
+
+Based on the Open Cap Table Coalition's \cite{octc} standards, the current work proposes using Alloy \cite{jackson-2002} to provide a formal semantics for transactions to maintain the consistency of the \glspl{capitalization-table} over time. 

@@ -1,0 +1,31 @@
+\chapter{Conclusion}\label{ch:conclusion}
+
+In this thesis, we started with a \textit{data} specification and worked towards a \textit{domain} specification. We did so by taking the original model's embodied domain knowledge as a starting point, and by identifying the key abstractions underlying the original model and expressing those abstractions in Alloy. In doing so, we progressed from the syntactical nature of the original \textit{data} specification to a \textit{semantic} nature of the \textit{domain} specification, which considers the relations between different sorts of entities and the invariants that are expected (based on domain knowledge).
+
+What have we gained in doing so?
+
+In the transaction tracing system:
+
+\begin{enumerate}
+	\item We uncovered an interesting symmetry between the graphs of \glspl{transaction} and \glspl{security} in the transaction tracing model, and used that data structure to ensure that all \glspl{security} and transactions in the model are auditable
+	\item We enforced constraints on the \glspl{transaction} and the \glspl{security} they affect and ensured that basic accounting identities are respected
+\end{enumerate}
+
+In the vesting system:
+
+\begin{enumerate}
+	\item We gave a clear evaluation rule to vesting rules.
+	\item We enhanced the expressiveness of the vesting rules by completing the vesting triggers with propositional logic operators (AND, OR, NOT), for example, allowing for the expression of milestones achieved until a given date
+\end{enumerate}
+
+But the most important finding is that the complexity of business rules can be sensibly formalized beyond the syntactical level. The semantics of the rules, which might be ambiguous in legal documents given the natural language used, can be made explicit in a formal model. This is a first step towards a more general formalization of business contract rules, which can be used to reason about the rules, and to verify that the rules are implemented correctly in software systems.
+
+\section{Further work}
+
+Given that formal methods (and Alloy specially) show promise in modeling business domains, we would like to explore the following avenues of further work:
+
+\begin{itemize}
+	\item\textbf{Temporal modeling} starting from version 6, Alloy supports modeling dynamics with temporal logic. This should allow an implementation of a new model for \glspl{capitalization-table} based on state machines.
+	\item\textbf{Automatic generation of validators} With some effort, it should be possible to generate validators based on the Alloy models. This would allow the automatic generation of validators for the transaction tracing system and the vesting system.
+	\item\textbf{Extraction of source code} Again, with some effort, the Alloy application programming interface could be leveraged to extract source code from the Alloy models. As two examples that come to mind: database schemas and views could be generated from signatures and functions. Implementations of transition systems or state machines could be generated from Alloy models that use temporal logic.
+\end{itemize}

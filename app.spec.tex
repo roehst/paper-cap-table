@@ -1,0 +1,54 @@
+
+Before stating the properties to be check, a set of functions to query the number of shares in different contexts and also to trace the lineage of \glspl{security} need to be defined (Listing \ref{lst:tt-alloy-functions}). 
+
+%\subsubsection{Queries and functions.}
+
+%Before we can state the properties we intend to check, we need to define a few functions to query the number of shares in different contexts and also to trace the lineage of \glspl{security}. 
+
+\begin{listing}[!h]
+ \begin{multicols}{2}
+	\begin{minted}[fontsize=\footnotesize]
+     {alloy}
+fun lineage[sec : Security] : set Security {
+    sec.*(Security <: parent)
+}
+
+fun depth[sec : Security] : Int {
+    #lineage[sec]
+}
+
+fun aliveSecurities : set Security {
+    { sec : Security | no sec.use }
+}
+fun deadSecurities : set Security {
+    { sec : Security | some sec.use }
+}
+
+fun issuedShares : Int {
+    sum iss : Issuance | iss.shares
+}
+
+fun cancelledShares : Int {
+    sum can : Cancellation | can.shares
+}
+
+fun transferredShares : Int {
+    sum xfer : Transfer | xfer.shares
+}
+
+fun aliveShares : Int {
+    sum sec : aliveSecurities | sec.shares
+}
+
+fun deadShares : Int {
+    sum sec : deadSecurities | sec.shares
+}
+\end{minted}
+\end{multicols}
+	\caption{Alloy Functions}
+\label{lst:tt-alloy-functions}
+\end{listing}
+
+The lineage of \glspl{security} is defined using the \verb|*| transitive closure operator, showing a succinct definition embedded in Alloy.
+Another group of functions supports accounting identities (related to Shares).
+%(Listing \ref{lst:tt-alloy-functions-accounting}).

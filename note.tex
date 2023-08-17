@@ -1,0 +1,153 @@
+% document class is that of an article.
+
+\documentclass[12pt]{article}
+
+% better geometry
+\usepackage[margin=1in]{geometry}
+
+% I need minted for code highlighting,
+% configure it to gobble
+\usepackage{minted}
+
+\setminted{
+  baselinestretch=1.2, 
+  linenos, 
+  autogobble
+}
+
+% I want sans-serif font
+\renewcommand{\familydefault}{\sfdefault}
+
+% I need lorem ipsum
+\usepackage{lipsum}
+
+\usepackage{caption}
+
+\usepackage{tabularx}
+
+% add 1 line between paragraphs
+
+\setlength{\parskip}{1em}
+
+% i need to use \toprule, \bottomrule, etc
+\usepackage{booktabs}
+
+\begin{document}
+
+\title{Giving meaning to syntax with Alloy}
+
+% The author of the article is:
+% Rodrigo Stevaux
+\author{Rodrigo Stevaux}
+
+% The date of the article is the current date
+\date{\today}
+
+\maketitle
+
+% The abstract of the article is:
+% This is a note about how to use Alloy to give meaning to syntax.
+
+\begin{abstract}
+We improve an existing data model specification first given in JSON Schema by translating it to Alloy and adding richer constraints. We then use the Alloy Analyzer to find counterexamples to the constraints, which helps us to improve the specification. In doing so, we move from a syntax-only specification to a syntax-and-semantics specification.
+\end{abstract}
+
+\section{Event-sourcing in the OCF}
+
+The Open Captable Format (OCF) is based on event-sourcing. This means that the data in the platform is in the form of events that represent stage changes, and in order to compute the present state of the system we need to replay all events. Events that happen to a same security are correlated via the security's~\@{ID}.
+
+\section{Implementation language and limitations}
+
+The official specification of the OCF is given in JSON Schema. This technology is adopted by applications based on JSON APIs over HTTP, which is one of the most common ways to implement web applications. JSON Schema specifies what keys must be present in a JSON document and what are their types. It can also perform simple validations, such as checking if a number is positive or if a string is a valid email address.
+
+\subsection{Limitations}
+
+The choice of event-sourcing for the OCF doesn't match well with the fact that JSON Schema can describe documents but can not impose constraints over sets of documents. But the very nature of event-sourcing requires that all events that happen to an entity be considered in the correct sequence in order to validate the state of the entity. This is not possible with JSON Schema.
+
+As a simple example, it is not possible to specify the event representing the transfer of shares from one stakeholder to another is only valid if the stakeholder has enough shares to transfer.
+
+\section{Adopting a stronger framework}
+
+The Alloy language and the Alloy Analyzer can be used to develop a model that can express the constraints expected of a specification for cap tables. There are two approaches\footnote{The words static or dynamic models are appropriate too} we can take for modeling. We can aim for a \textit{structural model}, which does not consider time, or we can aim for a \textit{temporal model}, which considers time.~The two approaches are detailed in Table \ref{tab:structural-vs-temporal}.
+
+\begin{table}
+\begin{tabularx}{\textwidth}{l X X}
+\textbf{Aspect} & \textbf{Structural model} & \textbf{Temporal model} \\
+\midrule
+State & The model is a snapshot of the system at a given time. & The model is a sequence of snapshots of the system at different times. \\
+\midrule
+Constraints & The model is a set of constraints over the state of the system. & The model is a set of constraints over the sequence of states of the system. \\
+\midrule 
+Complexity & The model requires relational algebra and is simpler to implement. & The model requires temporal logic is more complex to implement. \\
+\end{tabularx}
+\captionof{table}{Structural vs.\ temporal models}\label{tab:structural-vs-temporal}
+\end{table}
+
+The structural approach is closer to a data specification model, and the temporal model is closer to a state machine specification. Since our starting point is the OCF, which is a data specification model, we adopt the structural approach. It is also simpler to implement.
+
+As we write the Alloy model, we add constraints in first-order logic to represent the domain. In doing so, we give much stronger semantics than that possible in JSON Schema.
+
+\section{The Alloy model}
+
+The structural model is based on: instead of linking events to security ID, we consider that any transaction consumes and destroys securities. An issuance creates a new security, and a cancellation destroys it. A transfer both consumes a security from the old stakeholder and creates a new one for the new stakeholder. In case the cancellation or transaction is only partial, a new balancing security must also be created.
+
+In this scheme, all transactions are ultimately composed of issues and cancellations. This is a simplification, but it is enough to represent the domain. There are 8 cases in total. Table~\ref{tab:initial-terminal} shows the possible initial and terminal transactions for any security.
+
+\begin{table}
+\begin{tabularx}{\textwidth}{X X}
+\toprule
+\textbf{Initial} & \textbf{Terminal} \\
+\midrule
+Issue & Cancellation \\
+Issue & Transfer \\
+\midrule
+Balance of partial cancellation & Cancellation \\
+Balance of partial cancellation & Transfer \\
+\midrule
+Transfer & Cancellation \\
+Transfer & Transfer \\
+\midrule
+Balance of partial transfer & Cancellation \\
+Balance of partial transfer & Transfer \\
+\bottomrule
+\end{tabularx}
+\captionof{table}{Initial and terminal cases}\label{tab:initial-terminal}
+\end{table}
+
+Now instead of focusing on the set of transactions that are correlated to the same security, we can focus on the conditions that make a single transaction valid, be it initial or terminal, aiding us in writing the model and constraints.
+
+\subsection{Validation of the model}
+
+We validate that our model is sound by enumerating properties of cap tables and writing them as assertions in Alloy. We then use the Alloy Analyzer to find counterexamples to the assertions. If the Analyzer finds a counterexample, it means that the assertion is false, and we must improve the model. If the Analyzer does not find a counterexample, it means that the assertion is true, and we can move on to the next assertion.
+
+By validating our model \textit{as we write it}, we can move much quicker than if we were to write the complete model and then validate it. We can only iterate quickly with Alloy because the feedback cycle is rapid enough to use a flow similar to test-driven development.
+
+The full listing of the model is given in Listing~\ref{lst:model}.
+
+\begin{listing}
+\begin{minted}{alloy}
+sig Security {
+  id: one Int,
+  name: one String,
+  total: one Int,
+  issued: one Int,
+  cancelled: one Int,
+  balance: one Int
+} {
+  issued = cancelled + balance
+  issued <= total
+  issued >= 0
+  cancelled >= 0
+  balance >= 0
+}
+\end{minted}
+\captionof{listing}{Full model}\label{lst:model}
+\end{listing}
+
+\section{Conclusion}
+
+With a handy equivalence between the structural model and the temporal model, we could simplify the modeling of sequence of events over time to each specific transition.
+
+Alloy proved very expressive and flexible. It allowed us to quickly iterate over the model and find counterexamples to our assumptions. It also allowed us to write the model in a way that is very close to the domain, which is not possible with JSON Schema.
+
+\end{document}
