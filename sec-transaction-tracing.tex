@@ -343,26 +343,27 @@ check {
 %\textbf
 {These properties cannot be modelled in JSON Schema, since we need to compare values in two different documents (in JSON Schema parlance).} But they can be clearly expressed in Alloy.
 
-In Listing \ref{lst:tt-alloy-properties-accounting}, accounting identities in the spirit of the given in the start of the chapter are simply to state: 
-\todo[inline]{texto vago...aqui é preciso relacionar essas props com as propriedades no início da seção... pra mostrar o que foi possível definir facilmente, e o poder do novo modelo. Essa é a seção mais importante! Numerei as props para poder relacionar com essa seção.}
+The number of shares in circulation can only increase as new shares are issued, since cancellations always decrease the number of shares in circulation. Transfers have no effect on the number of shares in circulation, since they only change the ownership of the shares. We reflect this in the Alloy model by defining the \verb|issuedShares|, \verb|cancelledShares|, and \verb|aliveShares| functions, as show in Listing~\ref{lst:tt-alloy-properties-accounting}. The specification and implementation of the accounting identities is straightforward. It is also \textit{critical}. Any design that can in principle violate these identities is an invalid design.
 
 \begin{listing}[!h]
-	\begin{minted}[fontsize=\footnotesize]{alloy}
+\begin{minted}[fontsize=\footnotesize]{alloy}
 cancelledSharesAlwaysLessThanIssued : check {
     lte[cancelledShares, issuedShares]
-} for 3
+}
+
 nonNegativityOfIssuedShares : check {
     nonneg[issuedShares]
-} for 3
+}
+
 nonNegativityOfCancelledShares : check {
     nonneg[cancelledShares]
-} for 3
+}
+
 aliveLessThanIssued : check {
     lte[aliveShares, issuedShares]
-} for 3
+}
 \end{minted}
-	\caption{Accounting Identities}
-\label{lst:tt-alloy-properties-accounting}
+\caption{Accounting Identities}\label{lst:tt-alloy-properties-accounting}
 \end{listing}
 
 Another important property for all those financial systems regards investor portfolios: they must all be disjoint (Listing \ref{lst:tt-alloy-properties-disjoint-portfolios}).
@@ -379,32 +380,34 @@ check {
 \label{lst:tt-alloy-properties-disjoint-portfolios}
 \end{listing}
 
-And we close by checking that all floating shares are owned. 
-\todo[inline]{texto vago. o que isso significa na prática, ou em relação às propriedades do início da seção??}
+Another property that we check is that all floating shares are owned, as show in listing \ref{lst:tt-alloy-properties-floating-shares}. This property rules out the possibility that the system issues shares without assigning them to an owner. This sort of mistake can happen because companies have both the concept of an authorized quantity of shares and the number of shares that the company actually issued.
 
 \begin{listing}[!h]
-	\begin{minted}[fontsize=\footnotesize]{alloy}
+\begin{minted}[fontsize=\footnotesize]{alloy}
+
 fun portfolioShares[stakeholder : Stakeholder] : Int {
     sum sec : stakeholder.portfolio | 
              (sec in aliveSecurities implies sec.shares else 0)
 }
+
 fun portfolioSharesAll : Int {
     sum stakeholder : Stakeholder | portfolioShares[stakeholder]
 }
+
 check {
     eq[aliveShares, portfolioSharesAll]
 }
 \end{minted}
-	\caption{Floating Shares}
+\caption{Floating Shares}
 \label{lst:tt-alloy-properties-floating-shares}
 \end{listing}
 
 \section{An example with a long chain of transactions}
 
-\todo[inline]{aqui precisamos contar uma estória sobre as transações reais e como esse recurso mostraria o que acontece com o modelo. }
+To give an interesting example, we will consider a long chain of transactions and securities, in order to show how the system behaves when everything is working together. Finding such an instance of the model is one of the features of the Alloy Analyzer. How this works is by characterizing the instance via a predicate and asking Alloy to find an instance that satisfies the predicate. 
 
-To give an interesting example, we use the \verb|depth| function we defined and asked Alloy to find a ``long'' instance. 
-%
+The \verb|depth| function is used to find the depth of a \gls{security} in the graph of \glspl{security}. The transitive closure operator \verb|^| when applied to the \verb|parent| relationship gives the lineage of any security, starting from an issuance. The depth is the size of the transitive closure of any security.
+
 Figure~\ref{fig:tt-alloy-example-transaction-single-issuance} shows the result of running the example. 
 
 \begin{listing}[!h]
@@ -426,9 +429,11 @@ run {
 
 In this instance, a security, denoted as \verb|Security$0|, was initially issued and subsequently partially cancelled. This cancellation resulted in the creation of a new security, referred to as \verb|Security$1|, which represents the remaining balance. Furthermore, a partial transfer of \verb|Security$1| led to the generation of two distinct securities, namely \verb|Security$3| and \verb|Security$4|, serving as the output and balance, respectively. Securities \verb|Security$2| and \verb|Security$3| are subsequently cancelled, while \verb|Security$4| is established as the balance \gls{security} to compensate for the cancellation of \verb|Security$3|.
 
+\section{Discussion}
 
+What we achieved by formalizing a model for the transactions that make up a company's capitalization table? First, we get a clear graphical view of the transactions. This allows one to analyze any sequence of transactions quickly, which is useful in auditing, for example. The graphical view also helps to communicate the business rules itself. Second, a system built upon our model would respect important conceptual, structural and accounting considerations that required in a correct design.
 
-\todo[inline]{é preciso enfatizar: como as instâncias criadas auxiliam o negócio (sturtups); que existem outras instâncias; e como a instância gerada satisfaz as propriedades, mantendo a consistência das cap-tables}
+We know that the instances we presented as examples are consistent because if they weren't Alloy would respond with a failure to find any model. They are correct insofar our specification, and understanding of the problem is correct; our development of the model is based on extensive industry experience by the author\footnote{Prior to working in technology, both in academia and industry, the author held a BS in Economics and worked in Venture Capital funds and startups. Currently, the author owns a company that provides cap table management services}.
 
 \section{Conclusion}
 
@@ -440,14 +445,14 @@ By using Alloy, we have been able to model the \gls{capitalization-table} of a c
 %
 We started with a \textit{data} specification and worked towards a \textit{domain} specification. The syntactical nature of the original \textit{data} model was enriched with a \textit{semantic} nature of the \textit{domain} behavior, taking into account the relationships between various types of entities and expected invariants (based on domain knowledge).
 
-As a result, in the transaction tracing system we could:
+As a result, our model features a transaction tracing system that can be used to track the lineage of \glspl{security} and \glspl{transaction} in a company's capitalization table. We also showed how the model can be used to verify the consistency of the capitalization table, and to check that the accounting identities hold.
+
+Future improvement is possible by:
 
 \begin{itemize}
-	\item uncover an interesting symmetry between the graphs of \glspl{transaction} and \glspl{security} in the transaction tracing model, and used that data structure to ensure that all \glspl{security} and transactions in the model are auditable.
-	\item enforce constraints on the \glspl{transaction} and the \glspl{security} and ensured that basic accounting identities are respected.
+    \item Incorporating additional knowledge domain aspects by specifying the logical components of Vesting and Convertible Securities.
+    \item Incorporating temporal features.
+    \item Exploring the potential usage of the Alloy application programming interface (API) for the purpose of feeding real data to the system as predicates and testing if they are consistent.
 \end{itemize}
 
-The semantics of the rules in legal documents, which might be ambiguous due to the natural language used, can be made explicit in a formal model. This is a first step towards a more general formalization of business contract rules, which can be used to reason about the rules, and to verify that the rules are implemented correctly in software systems.
-
-The model already incorporates additional knowledge domain aspects by specifying the logical components of Vesting and Convertible Securities. Although the existing components of capitalization tables offer a coherent model, our goal is to enhance the model by incorporating temporal features. In addition to this, our current research focuses on exploring the potential usage of the Alloy application programming interface (API) for the purpose of extracting source code from the Alloy models. This approach would make easier the production of business contract implementations based on an established model.
-
+Finally, the semantics of the rules we modeled are ultimately defined in legal documents. The model is a first step towards a more general formalization of business contract rules, which can be used to reason about the rules, and to verify that the rules are implemented correctly in software systems.
